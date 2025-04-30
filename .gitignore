@@ -1,0 +1,19 @@
+# JetBrains
+.idea
+
+# Temp files
+temp_files/*
+
+# Sample files
+sample_audio/*
+
+# Sandbox files
+sandbox.py
+snowbox.py
+
+# PyCache
+__pycache__/*
+*.pyc
+
+# macOS
+.DS_Store
