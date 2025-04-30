@@ -12,7 +12,7 @@ from demucs.htdemucs import HTDemucs
 from demucs.pretrained import get_model
 
 # Local imports
-from file_utils import _save_isolated_track
+from .file_utils import _save_isolated_track
 
 
 @lru_cache(maxsize=1)
