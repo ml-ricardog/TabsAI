@@ -2,3 +2,4 @@ torch~=2.7.0
 torchaudio~=2.7.0
 demucs~=4.0.1
 pydub~=0.25.1
+soundfile~=0.13.1
