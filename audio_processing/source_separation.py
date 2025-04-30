@@ -11,6 +11,9 @@ from demucs.apply import apply_model
 from demucs.htdemucs import HTDemucs
 from demucs.pretrained import get_model
 
+# Local imports
+from file_utils import _save_isolated_track
+
 
 @lru_cache(maxsize=1)
 def _get_htdemucs_model() -> HTDemucs:
@@ -49,29 +52,6 @@ def _isolate_guitar_waveform(waveform: Tensor) -> Tensor:
     guitar_waveform = separated_waveforms[guitar_index].squeeze(0)
 
     return guitar_waveform
-
-
-def _save_isolated_track(waveform: Tensor, track_name: str,
-                         sample_rate: float | int, base_path: Path) -> Path:
-    """
-    Save <waveform> as a .WAV file under the same directory as <base_path>.
-
-    Args:
-        waveform: Isolated waveform to save (2D Tensor).
-        track_name: Name of isolated track.
-        sample_rate: Sample rate of isolated waveform.
-        base_path: Path to original non-isolated audio file.
-
-    Returns:
-        Path to isolated track.
-    """
-    save_directory = base_path.parent
-    new_filename = f'{base_path.stem}_{track_name}.wav'
-    track_path = save_directory / new_filename
-
-    torchaudio.save(track_path, waveform, sample_rate)
-
-    return track_path
 
 
 def isolate_guitar(audio_path: Path) -> Path:
